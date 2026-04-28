@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N Bar — Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--cream:#f7f2e8;--sage:#7a8c6e;--sage-light:#a4b595;--dark:#1e1e18;--bark:#4a3c2a;--bark-light:#6b5440;--muted:#8a8070;--red:#b52b1e}
+body{background:var(--cream);color:var(--dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
+.cash-banner{background:var(--red);color:#fff;text-align:center;padding:.65rem 1rem;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.nav{background:var(--dark);display:flex;justify-content:center;overflow-x:auto;scrollbar-width:none;position:sticky;top:35px;z-index:50}
+.nav::-webkit-scrollbar{display:none}
+.nav-tab{padding:.85rem 1.1rem;font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(247,242,232,.4);cursor:pointer;white-space:nowrap;border:none;border-bottom:2px solid transparent;background:none;font-family:'Jost',sans-serif;transition:all .3s}
+.nav-tab:hover{color:#fff}
+.nav-tab.active{color:var(--sage-light);border-bottom-color:var(--sage-light)}
+.cover{min-height:42vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(122,140,110,.18) 0%,transparent 70%),var(--cream)}
+.cover-eyebrow{font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;color:var(--sage);margin-bottom:1rem;opacity:0;animation:rise .9s .2s forwards}
+.cover-logo{font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,18vw,9rem);font-weight:300;color:var(--bark);line-height:.9;opacity:0;animation:rise 1s .4s forwards}
+.cover-sub{font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-top:1rem;opacity:0;animation:rise .9s .65s forwards}
+.cover-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--bark-light);margin-top:.4rem;opacity:0;animation:rise .9s .85s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.section{padding:3rem 6vw 4rem;max-width:780px;margin:0 auto;display:none}
+.section.active{display:block}
+.section-header{text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(74,60,42,.15)}
+.section-icon{font-size:1.8rem;margin-bottom:.5rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;color:var(--bark)}
+.section-desc{font-size:.7rem;color:var(--muted);margin-top:.4rem;font-style:italic;font-family:'Cormorant Garamond',serif}
+.item{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.95rem 0;border-bottom:1px dashed rgba(74,60,42,.12);opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.item.vis{opacity:1;transform:none}
+.item:last-child{border-bottom:none}
+.item-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--dark)}
+.item-desc{font-size:.67rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+.item-price{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--bark);white-space:nowrap;font-weight:600}
+.subcat{font-size:.52rem;letter-spacing:.4em;text-transform:uppercase;color:var(--sage);margin:2rem 0 .3rem;display:flex;align-items:center;gap:.8rem}
+.subcat::after{content:'';flex:1;height:1px;background:rgba(122,140,110,.25)}
+.cash-note{background:#fff5f5;border:1px solid rgba(181,43,30,.2);border-radius:4px;padding:1.1rem 1.5rem;margin:0 6vw 3rem;max-width:780px;margin-left:auto;margin-right:auto;display:flex;align-items:center;gap:1rem}
+.cash-note-icon{font-size:1.4rem;flex-shrink:0}
+.cash-note-text{font-size:.7rem;line-height:1.7;color:var(--bark)}
+.cash-note-text strong{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:.2rem}
+.menu-footer{background:var(--dark);color:var(--cream);text-align:center;padding:3rem 2rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300}
+.sage-line{width:36px;height:1px;background:var(--sage-light);margin:1rem auto}
+.menu-footer p{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(247,242,232,.4);margin-top:.35rem}
+.footer-love{margin-top:1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.85rem;color:rgba(247,242,232,.25)}
+</style>
+</head>
+<body>
+<div class="cash-banner">💵 Cash Only — No Card Payments Accepted 💵</div>
+<header class="cover">
+<p class="cover-eyebrow">Garden Bar · Skopje</p>
+<h1 class="cover-logo">N</h1>
+<p class="cover-sub">Bar & Coffee Garden</p>
+<p class="cover-tagline">Made with love, served with care.</p>
+</header>
+<nav class="nav">
+<button class="nav-tab active" onclick="show('coffee',this)">☕ Coffee</button>
+<button class="nav-tab" onclick="show('virgin',this)">🥤 Virgin</button>
+<button class="nav-tab" onclick="show('beer',this)">🍺 Beer</button>
+<button class="nav-tab" onclick="show('alcohol',this)">🥃 Alcohol</button>
+<button class="nav-tab" onclick="show('cocktails',this)">🍹 Cocktails</button>
+</nav>
+<section class="section active" id="coffee">
+<div class="section-header"><div class="section-icon">☕</div><h2 class="section-title">Coffee</h2><p class="section-desc">Freshly ground · Served with care</p></div>
+<div class="item"><div><p class="item-name">Espresso</p></div><p class="item-price">90 den</p></div>
+<div class="item"><div><p class="item-name">Espresso Tonik</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Fredo Espresso</p><p class="item-desc">Iced shaken espresso</p></div><p class="item-price">130 den</p></div>
+<div class="item"><div><p class="item-name">Amerikano</p></div><p class="item-price">100 den</p></div>
+<div class="item"><div><p class="item-name">Latte</p></div><p class="item-price">150 den</p></div>
+<div class="item"><div><p class="item-name">Makijato</p><p class="item-desc">Small / Large</p></div><p class="item-price">100 / 120 den</p></div>
+<div class="item"><div><p class="item-name">Kapuchino</p></div><p class="item-price">130 den</p></div>
+</section>
+<section class="section" id="virgin">
+<div class="section-header"><div class="section-icon">🥤</div><h2 class="section-title">Virgin</h2><p class="section-desc">Soft drinks · Juices · Refreshments</p></div>
+<div class="item"><div><p class="item-name">Coca Cola</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Schweppes</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Fanta</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Ice Tea</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Rosa</p></div><p class="item-price">90 den</p></div>
+<div class="item"><div><p class="item-name">Mixed Juice</p></div><p class="item-price">170 den</p></div>
+</section>
+<section class="section" id="beer">
+<div class="section-header"><div class="section-icon">🍺</div><h2 class="section-title">Beer</h2><p class="section-desc">Cold & refreshing</p></div>
+<div class="item"><div><p class="item-name">Bira Moretti</p></div><p class="item-price">170 den</p></div>
+<div class="item"><div><p class="item-name">Heineken</p></div><p class="item-price">150 den</p></div>
+<div class="item"><div><p class="item-name">Sol</p></div><p class="item-price">190 den</p></div>
+<div class="item"><div><p class="item-name">Skopsko</p></div><p class="item-price">150 den</p></div>
+</section>
+<section class="section" id="alcohol">
+<div class="section-header"><div class="section-icon">🥃</div><h2 class="section-title">Alcohol</h2><p class="section-desc">Premium spirits · Neat or on the rocks</p></div>
+<p class="subcat">Whiskey</p>
+<div class="item"><div><p class="item-name">Jameson</p></div><p class="item-price">170 den</p></div>
+<div class="item"><div><p class="item-name">Jack Daniels</p></div><p class="item-price">310 den</p></div>
+<p class="subcat">Vodka</p>
+<div class="item"><div><p class="item-name">Absolut</p></div><p class="item-price">180 den</p></div>
+<div class="item"><div><p class="item-name">Smirnoff</p></div><p class="item-price">170 den</p></div>
+<p class="subcat">Gin</p>
+<div class="item"><div><p class="item-name">Gordons</p></div><p class="item-price">170 den</p></div>
+<div class="item"><div><p class="item-name">Gordons Pink</p></div><p class="item-price">200 den</p></div>
+<div class="item"><div><p class="item-name">Bombay</p></div><p class="item-price">230 den</p></div>
+<div class="item"><div><p class="item-name">Tanqueray</p></div><p class="item-price">240 den</p></div>
+<p class="subcat">Rum & Tequila</p>
+<div class="item"><div><p class="item-name">Bacardi</p></div><p class="item-price">160 den</p></div>
+<div class="item"><div><p class="item-name">Tequila</p></div><p class="item-price">150 den</p></div>
+<p class="subcat">Liqueurs & Other</p>
+<div class="item"><div><p class="item-name">Campari</p></div><p class="item-price">160 den</p></div>
+<div class="item"><div><p class="item-name">Jagermeister</p></div><p class="item-price">170 den</p></div>
+<div class="item"><div><p class="item-name">Limoncello</p></div><p class="item-price">220 den</p></div>
+<div class="item"><div><p class="item-name">Konak Badel</p></div><p class="item-price">130 den</p></div>
+<div class="item"><div><p class="item-name">Pelinkovec</p></div><p class="item-price">140 den</p></div>
+<div class="item"><div><p class="item-name">Uzo</p></div><p class="item-price">100 den</p></div>
+<div class="item"><div><p class="item-name">Wine</p></div><p class="item-price">200 den</p></div>
+<div class="item"><div><p class="item-name">Shot</p></div><p class="item-price">120 den</p></div>
+</section>
+<section class="section" id="cocktails">
+<div class="section-header"><div class="section-icon">🍹</div><h2 class="section-title">Cocktails</h2><p class="section-desc">Handcrafted · Fresh garnish · Served with care</p></div>
+<p class="subcat">Spritz & Light</p>
+<div class="item"><div><p class="item-name">Aperol Spritz</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Hugo</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Pallini Spritz</p></div><p class="item-price">310 den</p></div>
+<p class="subcat">Classics</p>
+<div class="item"><div><p class="item-name">Mojito</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Margarita</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Negroni</p></div><p class="item-price">320 den</p></div>
+<div class="item"><div><p class="item-name">Paloma</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Long Island</p></div><p class="item-price">350 den</p></div>
+<div class="item"><div><p class="item-name">Porn Star Martini</p></div><p class="item-price">330 den</p></div>
+<div class="item"><div><p class="item-name">Basel Smash</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Bramble</p></div><p class="item-price">310 den</p></div>
+<p class="subcat">Sours</p>
+<div class="item"><div><p class="item-name">Cocktail Sour</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Whiskey Sour</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Vodka Sour</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Gin Sour</p></div><p class="item-price">310 den</p></div>
+<p class="subcat">Splashes & Tonics</p>
+<div class="item"><div><p class="item-name">Melon Splash</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Mint Splash</p></div><p class="item-price">310 den</p></div>
+<div class="item"><div><p class="item-name">Gin Vodka Tonic</p></div><p class="item-price">270 den</p></div>
+<p class="subcat">N Bar Specials</p>
+<div class="item"><div><p class="item-name">NBB Cocktail</p></div><p class="item-price">360 den</p></div>
+<div class="item"><div><p class="item-name">Kampari</p></div><p class="item-price">160 den</p></div>
+</section>
+<div class="cash-note"><div class="cash-note-icon">💵</div><div class="cash-note-text"><strong>Payments Only Cash</strong>We do not accept card or online payments. Please have cash before ordering. Thank you!</div></div>
+<footer class="menu-footer"><div class="footer-logo">N Bar</div><div class="sage-line"></div><p>Petar Pop Arsov 14a · Skopje 1000</p><p>075 421 474 · Open until 12 AM</p><p class="footer-love">Made with love, served with care.</p></footer>
+<script>
+function show(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');window.scrollTo({top:document.querySelector('.nav').offsetTop-35,behavior:'smooth'});setTimeout(revealItems,80)}
+function revealItems(){document.querySelectorAll('.section.active .item').forEach((el,i)=>{el.classList.remove('vis');setTimeout(()=>el.classList.add('vis'),i*45)})}
+setTimeout(revealItems,300);
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:0.1});
+document.querySelectorAll('.item').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
